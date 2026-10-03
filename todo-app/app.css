@@ -8,6 +8,8 @@ body {
 
 
 
-
+.panel.column.is-half {
+  min-height: 50rem;
+}
 
 

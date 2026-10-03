@@ -32,11 +32,18 @@ addButton.addEventListener('click',function(e){
 
     todos.push(text);
     render();
+
+    todoInput.value = "";
  
 })
 
 
 todoReset.addEventListener('click',function(){
+    if (todos.length === 0){
+        alert("登録されているタスクはありません")
+        return;
+    }
+    
     todos.length = 0;
     render();
 })
