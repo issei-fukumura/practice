@@ -1,18 +1,20 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <script src="app.css"></script>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@1.0.4/css/bulma.min.css">
+    <link rel="stylesheet" href="app.css">
 </head>
-<body class="">
-    
 
-    <nav class="panel">
-  <p class="panel-heading">ToDoList</p>
-  <!-- <div class="panel-block">
+<body>
+
+
+    <nav class="panel column is-half center is-justify-content-center is-align-content-center ">
+        <p class="panel-heading">ToDoList</p>
+        <!-- <div class="panel-block">
     <p class="control has-icons-left">
       <input class="input" type="text" placeholder="Search" />
       <span class="icon is-left">
@@ -20,7 +22,7 @@
       </span>
     </p>
   </div> -->
-  <!-- <p class="panel-tabs">
+        <!-- <p class="panel-tabs">
     <a class="is-info">All</a>
     <a >Public</a>
     <a>Private</a>
@@ -29,34 +31,35 @@
     <button>＋</button>
   </p> -->
 
-  <label class="panel-block">
-    <input type="checkbox" />
-    remember me
-  </label>
+        <nav>
+            <div id="todo-list"></div>
+        </nav>
 
-  
+        <!-- <label class="panel-block">
+    <input id="todo-list" type="checkbox" />
+  </label> -->
 
-
-
-  <div class="panel-block">
-    <button class="button is-link
+        <div id="todo-reset" class="panel-block">
+            <button class="button is-link
      is-outlined is-fullwidth">
-      Reset all filters
-    </button>
-  </div>
-</nav>
+                Reset all filters
+            </button>
+        </div>
+
+        <form type="submit">
+            <div class="container">
+                <input id="todo-input" class="input" aria-label='todo' type="text" placeholder="やることを入力" />
+                <button id="add-button" class="button is-active" type="button">追加</button>
+            </div>
+        </form>
+
+    </nav>
 
 
 
-<form >
-    <div class="container">
-        <input class="input" aria-label='todo' type="text" placeholder="やることを入力" />
-        <button id="addButton" class="button is-active" type="submit">追加</button>
-    </div>
-    
-</form>
 
-    
+
+
 
 
 
@@ -64,4 +67,5 @@
 
     <script src="app.js"></script>
 </body>
+
 </html>
