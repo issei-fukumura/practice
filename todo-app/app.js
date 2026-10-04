@@ -1,4 +1,4 @@
-const todos = []
+let todos = []
 
 const addButton = document.querySelector("#add-button")
 const todoInput = document.querySelector("#todo-input")
@@ -17,12 +17,27 @@ function render() {
 
     todos.forEach(function (todo) {
         const row = document.createElement("div")
+        const deleteButton = document.createElement("button")
 
         row.classList.add("panel-block", "todo-item",);
 
-        row.classList.add("panel-block")
-        row.textContent = todo
+        function removeTodo() {
+            todos = todos.filter(function (t) {
+                return t.id !== todo.id;
+            })
+        }
+
+        deleteButton.classList.add("delete", "ml-auto");
+        deleteButton.setAttribute("aria-label", "消去")
+        deleteButton.addEventListener('click', function () {
+            removeTodo();
+            render();
+        })
+
+        row.textContent = todo.text
         todoList.append(row)
+        row.append(deleteButton)
+
     })
 
 
@@ -37,7 +52,7 @@ addButton.addEventListener('click', function (e) {
         return;
     }
 
-    todos.push(text);
+    todos.push({ id: Date.now(), text: text, done: false });
     render();
 
     todoInput.value = "";
