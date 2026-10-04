@@ -4,12 +4,21 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
+  background-color: #232323;
+}
+
+section.panel{
+    background-color:black;
 }
 
 
 
 .panel.column.is-half {
   min-height: 50rem;
+  
 }
 
 
+.panel-block{
+    margin-top: auto;
+}

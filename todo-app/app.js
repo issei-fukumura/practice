@@ -1,14 +1,21 @@
-const  todos = []
+const todos = []
 
 const addButton = document.querySelector("#add-button")
 const todoInput = document.querySelector("#todo-input")
 const todoList = document.querySelector("#todo-list")
-const todoReset = document.querySelector("#todo-reset")
+const todoReset = document.querySelector("#todo-reset button")
 
-function render(){
+function render() {
     todoList.replaceChildren();
+    if (todos.length === 0) {
+        const emptyMessage = document.createElement("div")
+        emptyMessage.classList.add("panel-block", "has-text-centered")
+        emptyMessage.textContent = "登録されているタスクはありません"
+        todoList.append(emptyMessage)
+        return;
+    }
 
-    todos.forEach(function(todo){
+    todos.forEach(function (todo) {
         const row = document.createElement("div")
 
         row.classList.add("panel-block", "todo-item",);
@@ -21,11 +28,11 @@ function render(){
 
 }
 
-addButton.addEventListener('click',function(e){
+addButton.addEventListener('click', function (e) {
     e.preventDefault();
     const text = todoInput.value.trim();
 
-    if (text === ""){
+    if (text === "") {
         alert("文字を入力してください。")
         return;
     }
@@ -34,21 +41,25 @@ addButton.addEventListener('click',function(e){
     render();
 
     todoInput.value = "";
- 
+    todoInput.focus();
+
 })
 
 
-todoReset.addEventListener('click',function(){
-    if (todos.length === 0){
+todoReset.addEventListener('click', function () {
+    if (todos.length === 0) {
         alert("登録されているタスクはありません")
         return;
     }
-    
-    todos.length = 0;
-    render();
+
+    const confirmed = confirm("登録されているタスクをリセットしますか？")
+    if (confirmed) {
+        todos.length = 0;
+        render();
+    }
 })
 
 
 
-
+render();
 

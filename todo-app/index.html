@@ -12,8 +12,8 @@
 <body>
 
 
-    <nav class="panel column is-half center is-justify-content-center is-align-content-center ">
-        <p class="panel-heading ">ToDoList</p>
+    <section class="panel column is-half center is-flex is-flex-direction-column">
+        <p class="panel-heading ">ToDoリスト</p>
         <!-- <div class="panel-block">
     <p class="control has-icons-left">
       <input class="input" type="text" placeholder="Search" />
@@ -32,29 +32,37 @@
   </p>
   -->
 
-        <nav>
+        <div>
             <div id="todo-list"></div>
-        </nav>
+        </div>
 
         <!-- <label class="panel-block">
     <input id="todo-list" type="checkbox" />
   </label>  -->
 
+
+
+        <form>
+            <div class="field has-addons">
+                <div class="control is-expanded">
+                    <input id="todo-input" class="input" aria-label='todo' type="text" placeholder="やることを入力" />
+                </div>
+                <div class="control">
+                    <button id="add-button" class="button is-link" type="submit">追加</button>
+                </div>
+            </div>
+        </form>
+
         <div id="todo-reset" class="panel-block">
-            <button class="button is-link
-     is-outlined is-fullwidth">
+            <button class="button is-link is-outlined is-fullwidth ">
                 Reset all filters
             </button>
         </div>
 
-        <form type="submit">
-            <div class="container">
-                <input id="todo-input" class="input" aria-label='todo' type="text" placeholder="やることを入力" />
-                <button id="add-button" class="button is-active" type="button">追加</button>
-            </div>
-        </form>
 
-    </nav>
+
+
+    </section>
 
 
 
