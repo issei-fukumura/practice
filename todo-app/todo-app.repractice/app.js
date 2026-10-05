@@ -5,7 +5,7 @@ let todos = [];
 const addButton = document.querySelector("#addButton");
 const todoInput = document.querySelector("#todoInput");
 const todoList = document.querySelector("#todoList");
-
+const resetButton = document.querySelector("#resetButton");
 
 
 
@@ -20,6 +20,8 @@ function render() {
         list.textContent = todo.text;
         row.append(list);
 
+        list.classList.toggle("is-done",todo.completed);
+        
         const deleteButton = document.createElement("button");
         deleteButton.textContent = "消去";
         deleteButton.setAttribute("aria-label","消去");
@@ -35,7 +37,8 @@ function render() {
         doneButton.setAttribute("aria-label","完了");
         doneButton.classList.add("ms-auto");
         doneButton.addEventListener('click',function(){
-            list.classList.toggle("is-done");
+            todo.completed = !todo.completed
+            render();
         })
 
         row.append(doneButton);
@@ -62,6 +65,30 @@ addButton.addEventListener('click', function (e) {
     todoInput.value = "";
     todoInput.focus();
 })
+
+
+
+resetButton.addEventListener('click',function(){
+    
+    if (todos.length === 0){
+        alert("消去するタスクがありません")
+        return;
+    }
+
+
+    const confirming = confirm("リセットしますか？");
+    if(confirming){
+        todos = [];
+        render();
+    }
+
+
+})
+
+
+
+
+
 
 
 
