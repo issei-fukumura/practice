@@ -19,6 +19,24 @@ section.panel{
 }
 
 
-.panel-block{
+#todo-reset {
+  justify-content: flex-end;
+}
+
+#todo-reset button {
+  width: calc(100% / 3);   
+  min-width: 6rem;        
+}
+
+
+
+form{
     margin-top: auto;
 }
+
+.is-done{
+    text-decoration: line-through;
+}
+
+
+

@@ -17,27 +17,43 @@ function render() {
 
     todos.forEach(function (todo) {
         const row = document.createElement("div")
+        const label = document.createElement("span")
         const deleteButton = document.createElement("button")
+        const doneButton = document.createElement("button")
 
         row.classList.add("panel-block", "todo-item",);
 
-        function removeTodo() {
-            todos = todos.filter(function (t) {
-                return t.id !== todo.id;
-            })
-        }
+        label.textContent = todo.text
+        label.classList.toggle("is-done",todo.done)
 
-        deleteButton.classList.add("delete", "ml-auto");
+        deleteButton.classList.add("button", "is-danger", "is-outlined", "ml-1","is-small");
+        deleteButton.textContent = "消去"
         deleteButton.setAttribute("aria-label", "消去")
         deleteButton.addEventListener('click', function () {
+            function removeTodo() {
+            todos = todos.filter(function (item) {
+                return item.id !== todo.id;
+            })
+        }
             removeTodo();
             render();
         })
 
-        row.textContent = todo.text
+        doneButton.classList.add("button", "is-success", "is-outlined", "ml-auto", "is-small");
+        doneButton.textContent = "完了"
+        doneButton.setAttribute("aria-label","完了")
+        doneButton.addEventListener('click',function(){
+            todo.done = !todo.done;
+            render();
+        })
+
+        
         todoList.append(row)
+        row.append(label)
+        row.append(doneButton)
         row.append(deleteButton)
 
+        
     })
 
 
@@ -60,7 +76,6 @@ addButton.addEventListener('click', function (e) {
 
 })
 
-
 todoReset.addEventListener('click', function () {
     if (todos.length === 0) {
         alert("登録されているタスクはありません")
@@ -68,7 +83,8 @@ todoReset.addEventListener('click', function () {
     }
 
     const confirmed = confirm("登録されているタスクをリセットしますか？")
-    if (confirmed) {
+    const againConfirmed = confirm("本当にリセットしますか？")
+    if (confirmed && againConfirmed) {
         todos.length = 0;
         render();
     }
